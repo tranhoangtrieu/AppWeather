@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:text="22"
                         android:textAlignment="center"
-                        android:textColor="@Color/While"
+                        android:textColor= "@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 

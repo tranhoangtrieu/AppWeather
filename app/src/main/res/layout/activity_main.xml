@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/design_default_color_secondary_variant"
+    tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_constraintEnd_toEndOf = "parent"
+        android:layout_constraintEnd_toStarOf = "parent"
+        android:layout_constraintEnd_toTopOf = "parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mostly Cloudy"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:layout_marginTop="32dp"/>
+
+            <ImageView
+
+                android:id="@+id/imageView3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                app:srcCompat="@drawable/cloudy_sunny" />
+
+            <TextView
+                android:id="@+id/Text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ngay thang"
+                android:textAlignment="center"
+                android:textSize="19sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="80dp"
+                />
+            <TextView
+                android:id="@+id/Text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="25 do"
+                android:textAlignment="center"
+                android:textSize="63dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+
+                />
+            <TextView
+                android:id="@+id/Text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="H.27 ssss"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

@@ -10,9 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_constraintEnd_toEndOf = "parent"
-        android:layout_constraintEnd_toStarOf = "parent"
-        android:layout_constraintEnd_toTopOf = "parent">
+       >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +36,7 @@
                 app:srcCompat="@drawable/cloudy_sunny" />
 
             <TextView
-                android:id="@+id/Text2"
+                android:id="@+id/Text_datetime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ngay thang"
@@ -48,7 +46,7 @@
                 android:layout_marginTop="80dp"
                 />
             <TextView
-                android:id="@+id/Text3"
+                android:id="@+id/Text_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="25 do"
@@ -84,20 +82,20 @@
                         app:srcCompat="@drawable/rain" />
 
                     <TextView
-                        android:id="@+id/textView7"
+                        android:id="@+id/Text_chance_Of_Rain"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="22"
+                        android:text="22%"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         tools:ignore="DuplicateIds" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/Text_Rain"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="22"
+                        android:text="Rain"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -116,14 +114,13 @@
                         android:layout_width="34dp"
                         android:layout_height="34dp"
                         android:layout_gravity="center"
-
                         app:srcCompat="@drawable/wind" />
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/Text_Wind_Speed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="22"
+                        android:text="12k km/h"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -132,7 +129,7 @@
                         android:id="@+id/textView11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="22"
+                        android:text="Wind speed"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -155,10 +152,10 @@
                         app:srcCompat="@drawable/humidity" />
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/Text_Humidity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="22"
+                        android:text="18%"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -167,7 +164,7 @@
                         android:id="@+id/textView4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="22"
+                        android:text="Humidity"
                         android:textAlignment="center"
                         android:textColor="@Color/While"
                         android:textStyle="bold" />
@@ -190,6 +187,7 @@
                     />
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
@@ -206,7 +204,7 @@
                 android:clipToPadding="false"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:id="@+id/Veiw1"/>
+                android:id="@+id/Veiw_listday"/>
 
 
         </LinearLayout>

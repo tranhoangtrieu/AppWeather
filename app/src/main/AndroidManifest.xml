@@ -21,10 +21,6 @@
             android:theme="@style/Theme.AppWeather"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".MainActivity"
-            android:exported="false"
-            android:parentActivityName=".InputActivity" />
-        <activity
             android:name=".InputActivity"
             android:exported="true">
             <intent-filter>
@@ -33,6 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:parentActivityName=".InputActivity" />
     </application>
 
 </manifest>

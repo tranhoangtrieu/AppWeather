@@ -118,4 +118,11 @@ public class MainActivity extends AppCompatActivity {
         );
         requestQueue.add(jsonObjectRequest);
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(MainActivity.this, InputActivity.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
 }

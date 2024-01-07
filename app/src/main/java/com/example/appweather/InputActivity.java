@@ -4,15 +4,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.example.appweather.Adapter.LocationAutoSuggest;
+import com.google.android.gms.maps.model.LatLng;
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
+
+import com.example.appweather.Adapter.LocationAutoSuggest;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class InputActivity extends AppCompatActivity {
-    TextView Text_input;
     Button btn_Search;
     String city;
     @Override
@@ -20,6 +36,8 @@ public class InputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         mapping();
+        AutoCompleteTextView Text_input = findViewById(R.id.Text_input);
+        Text_input.setAdapter(new LocationAutoSuggest(InputActivity.this,android.R.layout.simple_list_item_1));
         btn_Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +54,6 @@ public class InputActivity extends AppCompatActivity {
     }
 
     private void mapping(){
-        Text_input = findViewById(R.id.Text_input);
         btn_Search = findViewById(R.id.btn_Search);
     }
 }

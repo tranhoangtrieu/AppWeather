@@ -38,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject weatherObj = weatherArray.getJSONObject(0);
                             String icon = weatherObj.getString("icon");
                             String urlIcon = "https://openweathermap.org/img/wn/" + icon + ".png";
+                            JSONObject main = response.getJSONObject("main");
+                            String temp = response.getString("temp");
+                            String humidity = main.getString("humidity");
+                            JSONObject wind = response.getJSONObject("wind");
+                            String speed = wind.getString("wind");
                         } catch (JSONException e) {
                             e.printStackTrace();
                             throw new RuntimeException(e);

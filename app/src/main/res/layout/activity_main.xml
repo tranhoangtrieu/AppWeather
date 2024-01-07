@@ -166,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:text="Humidity"
                         android:textAlignment="center"
-                        android:textColor="@Color/While"
+                        android:textColor= "@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 

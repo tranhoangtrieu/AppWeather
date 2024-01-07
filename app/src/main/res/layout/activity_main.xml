@@ -20,7 +20,6 @@
                 android:id="@+id/txtTemperState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mostly Cloudy"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textAlignment="center"
@@ -39,7 +38,6 @@
                 android:id="@+id/Text_datetime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ngay thang"
                 android:textAlignment="center"
                 android:textSize="19sp"
                 android:textColor="@color/white"
@@ -49,7 +47,6 @@
                 android:id="@+id/Text_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="25 do"
                 android:textAlignment="center"
                 android:textSize="63dp"
                 android:textStyle="bold"
@@ -79,13 +76,12 @@
                         android:layout_height="34dp"
                         android:layout_gravity="center"
 
-                        app:srcCompat="@drawable/rain" />
+                        app:srcCompat="@drawable/cloudy" />
 
                     <TextView
-                        android:id="@+id/Text_cloud"
+                        android:id="@+id/Text_cloudy"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="22%"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold"
@@ -95,7 +91,7 @@
                         android:id="@+id/Text_Rain"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rain"
+                        android:text="Cloud"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -120,7 +116,6 @@
                         android:id="@+id/Text_Wind_Speed"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="12k km/h"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -155,7 +150,6 @@
                         android:id="@+id/Text_Humidity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="18%"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textStyle="bold" />

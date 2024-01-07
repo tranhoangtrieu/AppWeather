@@ -32,12 +32,23 @@ public class MainActivity extends AppCompatActivity {
     TextView Text_temperature;
     TextView Text_Humidity;
     TextView Text_Wind_Speed;
-    TextView Text_cloud;
+    TextView Text_cloudy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mapping();
         getJsonWeather("hanoi");
+    }
+
+    private void mapping(){
+        txtTemperState = findViewById(R.id.txtTemperState);
+        imgWeatherIcon = findViewById(R.id.imgWeatherIcon);
+        Text_datetime = findViewById(R.id.Text_datetime);
+        Text_temperature = findViewById(R.id.Text_temperature);
+        Text_Humidity = findViewById(R.id.Text_Humidity);
+        Text_Wind_Speed = findViewById(R.id.Text_Wind_Speed);
+        Text_cloudy = findViewById(R.id.Text_cloudy);
     }
 
     public void getJsonWeather(String city) {
@@ -65,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                             Text_Wind_Speed.setText(speed+"m/s");
                             JSONObject clouds = response.getJSONObject("clouds");
                             String all = clouds.getString("all");
-                            Text_cloud.setText(all + "%");
+                            Text_cloudy.setText(all + "%");
                             String date = response.getString("dt");
                             long lDate = Long.parseLong(date);
                             SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd-MM-yyyy HH:mm:ss");

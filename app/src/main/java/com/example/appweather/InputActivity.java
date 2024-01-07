@@ -14,7 +14,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 public class InputActivity extends AppCompatActivity {
     TextView Text_input;
     Button btn_Search;
-    String city = "";
+    String city;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +23,10 @@ public class InputActivity extends AppCompatActivity {
         btn_Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(city == ""){
+                city = Text_input.getText().toString().trim();
+                if(city.equals("")){
                     city = "Ho Chi Minh";
-                }else city = Text_input.getText().toString().trim();
+                }
                 Intent intent = new Intent(InputActivity.this, MainActivity.class);
                 intent.putExtra("city", city);
                 startActivity(intent);

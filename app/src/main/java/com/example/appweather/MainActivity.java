@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mapping();
         String city = getIntent().getExtras().getString("city");
         try {
-            if(city != "" && city != null){
+            if(city.equals("")){
                 getJsonWeather("Ho Chi Minh");
             }else getJsonWeather(city);
         }catch (Exception e){

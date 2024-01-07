@@ -2,7 +2,9 @@ package com.example.appweather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,12 +35,21 @@ public class MainActivity extends AppCompatActivity {
     TextView Text_Humidity;
     TextView Text_Wind_Speed;
     TextView Text_cloudy;
+    TextView Text_NameCity;
+    TextView Text_NameNational;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mapping();
-        getJsonWeather("hanoi");
+        String city = getIntent().getExtras().getString("city");
+        try {
+            if(city != "" && city != null){
+                getJsonWeather("Ho Chi Minh");
+            }else getJsonWeather(city);
+        }catch (Exception e){
+            System.out.println("Không được để trống!! " + e.getMessage());
+        }
     }
 
     private void mapping(){
@@ -49,10 +60,12 @@ public class MainActivity extends AppCompatActivity {
         Text_Humidity = findViewById(R.id.Text_Humidity);
         Text_Wind_Speed = findViewById(R.id.Text_Wind_Speed);
         Text_cloudy = findViewById(R.id.Text_cloudy);
+        Text_NameCity = findViewById(R.id.Text_NameCity);
+        Text_NameNational = findViewById(R.id.Text_NameNational);
     }
 
-    public void getJsonWeather(String city) {
-        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&units=metric";
+    public void getJsonWeather(final String city) {
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=" +city+ "&appid=" + API_KEY + "&units=metric";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -83,17 +96,23 @@ public class MainActivity extends AppCompatActivity {
                             Date dates = new Date(lDate * 1000);
                             String currenttime = dateFormat.format(dates);
                             Text_datetime.setText(currenttime);
+                            String nameCity = response.getString("name");
+                            Text_NameCity.setText("Thành phố : "+nameCity);
+                            JSONObject sys = response.getJSONObject("sys");
+                            String national = sys.getString("country");
+                            Text_NameNational.setText("Quốc gia : "+national);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             throw new RuntimeException(e);
                         }
-                        Toast.makeText(MainActivity.this, "" + response.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Dữ liệu thời tiết của thành phố : " + city, Toast.LENGTH_SHORT).show();
+                        Log.d("Error",response.toString());
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "" + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Không có dữ liệu của thành phố : " + city, Toast.LENGTH_SHORT).show();
                     }
                 }
         );

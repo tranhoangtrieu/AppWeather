@@ -17,9 +17,14 @@
             android:name=".FutureActivity"
             android:exported="false"
             android:label="@string/title_activity_future"
-            android:theme="@style/Theme.AppWeather" />
+            android:theme="@style/Theme.AppWeather"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:parentActivityName=".InputActivity" />
+        <activity
+            android:name=".InputActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

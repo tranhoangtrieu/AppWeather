@@ -67,12 +67,12 @@ public class MainActivity extends AppCompatActivity {
                             String temperState = weatherObj.getString("description");
                             txtTemperState.setText(temperState);
                             JSONObject main = response.getJSONObject("main");
-                            String temp = response.getString("temp");
-                            Text_temperature.setText(temp+"°");
+                            String temp = main.getString("temp");
+                            Text_temperature.setText(temp+"°C");
                             String humidity = main.getString("humidity");
                             Text_Humidity.setText(humidity+"%");
                             JSONObject wind = response.getJSONObject("wind");
-                            String speed = wind.getString("wind");
+                            String speed = wind.getString("speed");
                             Text_Wind_Speed.setText(speed+"m/s");
                             JSONObject clouds = response.getJSONObject("clouds");
                             String all = clouds.getString("all");
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                             String date = response.getString("dt");
                             long lDate = Long.parseLong(date);
                             SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, dd-MM-yyyy HH:mm:ss");
-                            Date dates = new Date(lDate);
+                            Date dates = new Date(lDate * 1000);
                             String currenttime = dateFormat.format(dates);
                             Text_datetime.setText(currenttime);
                         } catch (JSONException e) {

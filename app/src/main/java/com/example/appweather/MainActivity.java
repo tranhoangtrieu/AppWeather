@@ -47,13 +47,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mapping();
         String city = getIntent().getExtras().getString("city");
-        try {
-            if(city.equals("")){
-                getJsonWeather("Ho Chi Minh");
-            }else getJsonWeather(city);
-        }catch (Exception e){
-            System.out.println("Không được để trống!! " + e.getMessage());
-        }
+        if(city.equals("")){
+            getJsonWeather("Ho Chi Minh");
+        }else getJsonWeather(city);
         btn_Next_day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         Text_cloudy = findViewById(R.id.Text_cloudy);
         Text_NameCity = findViewById(R.id.Text_NameCity);
         Text_NameNational = findViewById(R.id.Text_NameNational);
+        btn_Next_day = findViewById(R.id.btn_Next_day);
     }
 
     public void getJsonWeather(final String city) {

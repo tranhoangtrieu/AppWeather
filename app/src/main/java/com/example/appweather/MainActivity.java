@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     TextView Text_NameCity;
     TextView Text_NameNational;
 
-    TextView Text_7_day;
+    Button btn_Next_day;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             System.out.println("Không được để trống!! " + e.getMessage());
         }
+        btn_Next_day.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FutureActivity.class);
+                intent.putExtra("city", city);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 

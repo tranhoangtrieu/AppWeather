@@ -119,10 +119,10 @@
                             android:layout_height="34dp"
                             android:layout_gravity="center"
 
-                            app:srcCompat="@drawable/rain" />
+                            app:srcCompat="@drawable/cloudy" />
 
                         <TextView
-                            android:id="@+id/Text_chance_Of_Rain"
+                            android:id="@+id/Text_chance_Of_Cloudy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="22%"
@@ -132,10 +132,10 @@
                             tools:ignore="DuplicateIds" />
 
                         <TextView
-                            android:id="@+id/Text_Rain"
+                            android:id="@+id/Text_Cloudy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Rain"
+                            android:text="Cloud"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textStyle="bold" />

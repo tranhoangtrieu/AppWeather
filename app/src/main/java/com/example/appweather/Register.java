@@ -46,10 +46,13 @@ public class Register extends AppCompatActivity {
 
     }
     private void initUI(){
-        edit_username = findViewById(R.id.edit_username);
-        edit_password = findViewById(R.id.edit_password);
-        edit_name = findViewById(R.id.edit_name);
+        edit_username = findViewById(R.id.edit_usernameRegister);
+        edit_password = findViewById(R.id.edit_passwordRegister);
+        edit_name = findViewById(R.id.edit_nameRegister);
         btn_dangky = findViewById(R.id.btn_dangky);
+        btn_quaylai = findViewById(R.id.btn_Quaylai)
+
+        ;
     }
     private void addUser() {
         String strusername = edit_username.getText().toString().trim();

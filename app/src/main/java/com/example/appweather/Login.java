@@ -19,21 +19,25 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
-
-    Button btn_dangnhap;
+    Button btn_dangnhap ;
     Button btn_dangky;
+
     EditText edit_username;
     EditText edit_password;
     TextView text_name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        InitUI();
 
         btn_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {login();
+            public void onClick(View v) {
+
+                login();
 
             }
         });
@@ -43,6 +47,7 @@ public class Login extends AppCompatActivity {
                 Intent intent = new Intent(Login.this,Register.class);
                 startActivity(intent);
 
+
             }
         });
 
@@ -51,7 +56,7 @@ public class Login extends AppCompatActivity {
 
     private void InitUI(){
         edit_username = findViewById(R.id.edit_username);
-        edit_password = findViewById(R.id.edit_password);
+
         btn_dangnhap = findViewById(R.id.btn_dangnhap);
         btn_dangky = findViewById(R.id.btn_dangky);
 

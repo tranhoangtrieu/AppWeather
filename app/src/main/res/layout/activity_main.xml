@@ -209,16 +209,16 @@
                     android:layout_marginStart="16dp"
                     />
 
-                <TextView
+                <Button
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"
+
                     android:text="Next 7 day"
-                    />
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView

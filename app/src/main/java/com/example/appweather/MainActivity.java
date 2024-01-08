@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     TextView Text_cloudy;
     TextView Text_NameCity;
     TextView Text_NameNational;
+
+    TextView Text_7_day;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             System.out.println("Không được để trống!! " + e.getMessage());
         }
+
     }
 
     private void mapping(){
@@ -125,4 +129,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
         super.onBackPressed();
     }
+
+
 }

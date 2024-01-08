@@ -59,6 +59,7 @@ public class Login extends AppCompatActivity {
 
         btn_dangnhap = findViewById(R.id.btn_dangnhap);
         btn_dangky = findViewById(R.id.btn_dangky);
+        edit_password = findViewById(R.id.edit_Password);
 
     }
 
@@ -78,13 +79,19 @@ public class Login extends AppCompatActivity {
         if(TextUtils.isEmpty(strusername) ||TextUtils.isEmpty(strpassword) ){
             return;
         }
+
+
         User user = new User(strusername,strpassword);
         if(isAccountExist(user)){
             setContentView(R.layout.login);
             text_name = findViewById(R.id.tetx_name);
+            text_name.setText(strusername);
 
 
-        }
+
+
+
+       }
     }
 
 }

@@ -56,4 +56,11 @@ public class InputActivity extends AppCompatActivity {
     private void mapping(){
         btn_Search = findViewById(R.id.btn_Search);
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(InputActivity.this, Login.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
 }

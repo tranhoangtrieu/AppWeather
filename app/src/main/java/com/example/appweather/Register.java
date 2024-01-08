@@ -78,8 +78,11 @@ public class Register extends AppCompatActivity {
         List<User> list = UserDatabase.getInstance(this).userDAO().loadAllByUserName(user.getUsername());
         return list !=null && !list.isEmpty();
     }
-
-
-
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Register.this, Login.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
 }

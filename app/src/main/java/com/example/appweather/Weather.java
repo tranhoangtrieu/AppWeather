@@ -1,6 +1,7 @@
 package com.example.appweather;
 
 public class Weather {
+
     String currentTime;
     String state;
     String urlIcon;

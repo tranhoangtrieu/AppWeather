@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="10"
-    android:padding="15dp"
+    android:padding="10dp"
     android:background="@color/design_default_color_secondary_variant">
     <LinearLayout
         android:orientation="vertical"
@@ -36,21 +36,20 @@
         <ImageView
             android:layout_weight="33"
             android:id="@+id/imgIcon"
-            android:src="@drawable/cloudy"
             android:layout_width="0dp"
             android:layout_height="50dp"></ImageView>
         <TextView
             android:layout_weight="33"
             android:id="@+id/Text_tempMin"
             android:textColor="#FFC107"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"></TextView>
         <TextView
             android:layout_weight="33"
             android:id="@+id/Text_tempMax"
             android:textColor="#FFC107"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"></TextView>
     </LinearLayout>

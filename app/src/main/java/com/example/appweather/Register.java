@@ -52,9 +52,7 @@ public class Register extends AppCompatActivity {
         edit_password = findViewById(R.id.edit_passwordRegister);
         edit_name = findViewById(R.id.edit_nameRegister);
         btn_register = findViewById(R.id.btn_register);
-        btn_back = findViewById(R.id.btn_back)
-
-        ;
+        btn_back = findViewById(R.id.btn_back);
     }
     private void addUser() {
         String strusername = edit_username.getText().toString().trim();

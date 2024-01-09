@@ -67,8 +67,8 @@ public class WeatherAdapter extends BaseAdapter {
         viewHolder.Text_Curtime.setText(weather.getCurrentTime());
         viewHolder.Text_State.setText(weather.getState());
         Picasso.get().load(weather.getUrlIcon()).into(viewHolder.imgIcon);
-        viewHolder.Text_tempMin.setText(weather.getTemp_min());
-        viewHolder.Text_tempMax.setText(weather.getTemp_max());
+        viewHolder.Text_tempMin.setText(weather.getTemp_min()+"°C -");
+        viewHolder.Text_tempMax.setText(" "+weather.getTemp_max()+"°C");
         return convertView;
     }
 }

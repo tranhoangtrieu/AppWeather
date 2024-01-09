@@ -33,7 +33,6 @@ public class FutureActivity extends AppCompatActivity {
     List<Weather> weatherList;
     WeatherAdapter weatherAdapter;
     ListView List_Nextday;
-
     ImageView img_Back;
 
     @Override
@@ -45,6 +44,7 @@ public class FutureActivity extends AppCompatActivity {
         List_Nextday = findViewById(R.id.List_Nextday);
         weatherList = new ArrayList<>();
         weatherAdapter = new WeatherAdapter(FutureActivity.this, R.layout.row_weather, weatherList);
+        List_Nextday.setAdapter(weatherAdapter);
         getJsonNextDay(city);
         img_Back = findViewById(R.id.img_Back);
         img_Back.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +52,7 @@ public class FutureActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(FutureActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -91,9 +92,7 @@ public class FutureActivity extends AppCompatActivity {
 
                                 weatherList.add(new Weather(currentTime, description, urlIcon, temp_max, temp_min));
                             }
-                            List_Nextday.setAdapter(weatherAdapter);
-
-
+                            weatherAdapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                             throw new RuntimeException(e);

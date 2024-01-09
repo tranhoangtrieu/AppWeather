@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Database;
 
 import com.example.appweather.Adapter.LocationAutoSuggest;
 import com.example.appweather.Data.UserDatabase;
@@ -27,8 +26,7 @@ public class InputActivity extends AppCompatActivity {
         mapping();
         Intent intent = getIntent();
         String strusername = intent.getExtras().getString("strusername");
-        Text_name.setText("Xin chào "+UserDatabase.getInstance(this).userDAO().getNameOfUser(strusername));
-
+        Text_name.setText("Xin chào "+ UserDatabase.getInstance(this).userDAO().getNameOfUser(strusername));
         Text_input.setAdapter(new LocationAutoSuggest(InputActivity.this,android.R.layout.simple_list_item_1));
         btn_Search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +41,6 @@ public class InputActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     private void mapping(){

@@ -1,8 +1,21 @@
 package com.example.appweather;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
+import android.Manifest;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,14 +52,22 @@ public class MainActivity extends AppCompatActivity {
     TextView Text_cloudy;
     TextView Text_NameCity;
     TextView Text_NameNational;
-
     Button btn_Next_day;
+    String city;
+    private static  String TITLE_PUSH_NOTIFICATION = "Thông báo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                // Request permission and postpone setting up UI
+                requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+                return;
+            }
+        }
         setContentView(R.layout.activity_main);
         mapping();
-        String city = getIntent().getExtras().getString("city");
+        city = getIntent().getExtras().getString("city");
         if(city.equals("")){
             getJsonWeather("Ho Chi Minh");
         }else getJsonWeather(city);
@@ -111,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject sys = response.getJSONObject("sys");
                             String national = sys.getString("country");
                             Text_NameNational.setText("Quốc gia : "+national);
+                            sendNotification();
                         } catch (JSONException e) {
                             e.printStackTrace();
                             throw new RuntimeException(e);
@@ -128,6 +150,54 @@ public class MainActivity extends AppCompatActivity {
         );
         requestQueue.add(jsonObjectRequest);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1 && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // Permission granted, proceed with setting up UI
+            recreate();
+        }
+    }
+    private int getNotificationID() {
+        return (int) new Date().getTime();
+    }
+
+
+    private void sendNotification() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sunny);
+        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        // Create an Intent for the activity you want to start.
+        Intent resultIntent = new Intent(this, MainActivity.class);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntentWithParentStack(resultIntent);
+        PendingIntent resultPendingIntent =
+                stackBuilder.getPendingIntent(getNotificationID(),
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        Intent intent = getIntent();
+        String temp = intent.getExtras().getString("temp");
+        String description = intent.getExtras().getString("description");
+
+        NotificationCompat.Builder Builder = new NotificationCompat
+                .Builder(MainActivity.this, createNotificationChannel.CHANNEL_ID)
+                .setContentTitle(TITLE_PUSH_NOTIFICATION)
+                .setContentText("Thời tiết hôm nay của thành phố "+ city +"\nNhiệt độ "+ Text_temperature.getText() +"\nTrạng thái thời tiết "+ txtTemperState.getText())
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Thời tiết hôm nay của thành phố "+ city +"\nNhiệt độ "+ Text_temperature.getText() +"\nTrạng thái thời tiết : "+ txtTemperState.getText()))
+                .setSmallIcon(R.drawable.cloudy_sunny)
+                .setLargeIcon(bitmap)
+                .setSound(uri)
+                .setContentIntent(resultPendingIntent)
+                .setAutoCancel(true);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
+            notificationManager.notify(getNotificationID(), Builder.build());
+        }
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(MainActivity.this, InputActivity.class);

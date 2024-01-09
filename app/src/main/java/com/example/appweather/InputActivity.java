@@ -4,39 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appweather.Adapter.LocationAutoSuggest;
 //import com.google.android.gms.maps.model.LatLng;
-import android.content.Context;
-import android.location.Address;
-import android.location.Geocoder;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
-
-import com.example.appweather.Adapter.LocationAutoSuggest;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import android.widget.TextView;
 
 public class InputActivity extends AppCompatActivity {
     Button btn_Search;
+    AutoCompleteTextView Text_input;
     String city;
+    TextView Text_name;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_input);
         mapping();
-        AutoCompleteTextView Text_input = findViewById(R.id.Text_input);
+        Intent intent = getIntent();
+        String strusername = intent.getExtras().getString("strusername");
+        Text_name.setText(strusername);
         Text_input.setAdapter(new LocationAutoSuggest(InputActivity.this,android.R.layout.simple_list_item_1));
         btn_Search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +44,8 @@ public class InputActivity extends AppCompatActivity {
 
     private void mapping(){
         btn_Search = findViewById(R.id.btn_Search);
+        Text_input = findViewById(R.id.Text_input);
+        Text_name = findViewById(R.id.Text_name);
     }
     @Override
     public void onBackPressed() {

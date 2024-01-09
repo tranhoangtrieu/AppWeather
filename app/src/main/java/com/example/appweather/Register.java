@@ -22,25 +22,27 @@ public class Register extends AppCompatActivity {
     EditText edit_username;
     EditText edit_password;
     EditText edit_name;
-    Button btn_quaylai;
-    Button btn_dangky;
+    Button btn_back;
+    Button btn_register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initUI();
-        btn_quaylai.setOnClickListener(new View.OnClickListener() {
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(Register.this, Login.class);
                 startActivity(intent);
+                finish();
             }
         });
-        btn_dangky.setOnClickListener(new View.OnClickListener() {
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {addUser();
-
+                Intent intent = new Intent(Register.this, Login.class);
+                startActivity(intent);
             }
         });
 
@@ -49,8 +51,8 @@ public class Register extends AppCompatActivity {
         edit_username = findViewById(R.id.edit_usernameRegister);
         edit_password = findViewById(R.id.edit_passwordRegister);
         edit_name = findViewById(R.id.edit_nameRegister);
-        btn_dangky = findViewById(R.id.btn_dangky);
-        btn_quaylai = findViewById(R.id.btn_Quaylai)
+        btn_register = findViewById(R.id.btn_register);
+        btn_back = findViewById(R.id.btn_back)
 
         ;
     }

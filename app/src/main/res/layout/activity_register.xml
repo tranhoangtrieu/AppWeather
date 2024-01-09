@@ -49,14 +49,14 @@
         android:textColorHint="@color/white"
         android:textColor="@color/white"/>
     <Button
-        android:id="@+id/btn_dangky"
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Đăng Ký"
         android:layout_marginTop="20dp"
         />
     <Button
-        android:id="@+id/btn_Quaylai"
+        android:id="@+id/btn_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Quay lại"

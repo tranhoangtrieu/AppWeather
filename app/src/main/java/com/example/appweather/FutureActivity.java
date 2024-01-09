@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -13,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.appweather.Adapter.WeatherAdapter;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -27,6 +31,10 @@ import java.util.List;
 public class FutureActivity extends AppCompatActivity {
     static final String API_KEY = "d15dcebccc91478483885fba781fc2a6" ;
     List<Weather> weatherList;
+    WeatherAdapter weatherAdapter;
+    ListView List_Nextday;
+
+    ImageView img_Back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +42,21 @@ public class FutureActivity extends AppCompatActivity {
         setContentView(R.layout.activity_future);
         Intent intent = getIntent();
         String city = intent.getExtras().getString("city");
+        List_Nextday = findViewById(R.id.List_Nextday);
         weatherList = new ArrayList<>();
+        weatherAdapter = new WeatherAdapter(FutureActivity.this, R.layout.row_weather, weatherList);
         getJsonNextDay(city);
+        img_Back = findViewById(R.id.img_Back);
+        img_Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FutureActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    private void getJsonNextDay(final String city){
+    private void getJsonNextDay(String city){
         final String url = "https://api.openweathermap.org/data/2.5/forecast?q="+city+"&appid="+API_KEY+"&units=metric";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -73,6 +91,8 @@ public class FutureActivity extends AppCompatActivity {
 
                                 weatherList.add(new Weather(currentTime, description, urlIcon, temp_max, temp_min));
                             }
+                            List_Nextday.setAdapter(weatherAdapter);
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();

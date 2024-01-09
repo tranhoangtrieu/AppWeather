@@ -1,7 +1,6 @@
 package com.example.appweather;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.arch.core.executor.ArchTaskExecutor;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.appweather.Data.UserDatabase;
 
@@ -19,13 +17,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
-    Button btn_dangnhap ;
-    Button btn_dangky;
+    Button btn_login ;
+    Button btn_register;
 
     EditText edit_username;
     EditText edit_password;
-    TextView text_name;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +29,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         InitUI();
 
-        btn_dangnhap.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -41,7 +37,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
-        btn_dangky.setOnClickListener(new View.OnClickListener() {
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this,Register.class);
@@ -57,8 +53,8 @@ public class Login extends AppCompatActivity {
     private void InitUI(){
         edit_username = findViewById(R.id.edit_username);
 
-        btn_dangnhap = findViewById(R.id.btn_dangnhap);
-        btn_dangky = findViewById(R.id.btn_dangky);
+        btn_login = findViewById(R.id.btn_login);
+        btn_register = findViewById(R.id.btn_register);
         edit_password = findViewById(R.id.edit_Password);
 
     }
@@ -83,15 +79,10 @@ public class Login extends AppCompatActivity {
 
         User user = new User(strusername,strpassword);
         if(isAccountExist(user)){
-            setContentView(R.layout.login);
-            text_name = findViewById(R.id.tetx_name);
-            text_name.setText(strusername);
-
-
-
-
-
-       }
+            Intent intent = new Intent(Login.this, InputActivity.class);
+            intent.putExtra("strusername", strusername);
+            startActivity(intent);
+        }
     }
 
 }

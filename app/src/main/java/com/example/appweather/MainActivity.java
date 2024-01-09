@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, FutureActivity.class);
                 intent.putExtra("city", city);
                 startActivity(intent);
-                finish();
             }
         });
 

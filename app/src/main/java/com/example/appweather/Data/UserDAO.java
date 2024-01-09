@@ -20,7 +20,8 @@ public interface  UserDAO {
    List<User> loadAllByUserNamePassWord(String username,String password);
   @Insert
    void insertAll(User... users);
-
+    @Query("SELECT Name FROM USER WHERE username = :username")
+    String getNameOfUser(String username);
 
   @Delete
    void delete(User user);

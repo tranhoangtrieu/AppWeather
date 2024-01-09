@@ -21,6 +21,9 @@ public interface DAO {
     @Insert
     void insertAll(User... users);
 
+
+    @Query("SELECT Name FROM USER WHERE username = :username")
+    String getNameOfUser(String username);
     @Delete
     void delete(User user);
 }

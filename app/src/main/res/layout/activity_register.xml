@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Register"
+    android:background="@color/design_default_color_secondary_variant"
+
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng Ký Tài Khoản"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+
+    <EditText
+        android:id="@+id/edit_usernameRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:hint="Tên tài khoản"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        />
+    <EditText
+        android:id="@+id/edit_passwordRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textSize="16sp"
+        android:hint="Mật khẩu"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        />
+    <EditText
+        android:id="@+id/edit_nameRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textSize="16sp"
+        android:hint="Họ và tên"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"/>
+    <Button
+        android:id="@+id/btn_dangky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng Ký"
+        android:layout_marginTop="20dp"
+        />
+    <Button
+        android:id="@+id/btn_Quaylai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quay lại"
+        android:layout_marginTop="20dp"/>
+
+
+
+</LinearLayout>

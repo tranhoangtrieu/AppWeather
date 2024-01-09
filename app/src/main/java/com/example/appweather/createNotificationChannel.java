@@ -23,7 +23,7 @@ public class createNotificationChannel extends Application {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is not in the Support Library.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            //Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.mixkit_correct_answer_tone_2870);
             AudioAttributes.Builder audioAttributesBuilder = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
@@ -36,7 +36,7 @@ public class createNotificationChannel extends Application {
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
-            channel.setSound(uri ,defaultAudioAttributes);
+            channel.setSound(soundUri ,defaultAudioAttributes);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             if(notificationManager != null){

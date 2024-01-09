@@ -205,6 +205,4 @@ public class MainActivity extends AppCompatActivity {
         finish();
         super.onBackPressed();
     }
-
-
 }

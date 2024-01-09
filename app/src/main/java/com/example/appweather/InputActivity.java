@@ -16,9 +16,9 @@ import android.widget.TextView;
 
 public class InputActivity extends AppCompatActivity {
     Button btn_Search;
-    AutoCompleteTextView Text_input;
     String city;
     TextView Text_name;
+    AutoCompleteTextView Text_input;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +38,19 @@ public class InputActivity extends AppCompatActivity {
                 Intent intent = new Intent(InputActivity.this, MainActivity.class);
                 intent.putExtra("city", city);
                 startActivity(intent);
-                finish();
             }
         });
     }
 
     private void mapping(){
         btn_Search = findViewById(R.id.btn_Search);
-        Text_input = findViewById(R.id.Text_input);
         Text_name = findViewById(R.id.Text_name);
+        Text_input = findViewById(R.id.Text_input);
     }
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(InputActivity.this, Login.class);
         startActivity(intent);
-        finish();
         super.onBackPressed();
     }
 }

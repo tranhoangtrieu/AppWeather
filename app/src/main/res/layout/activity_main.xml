@@ -20,7 +20,7 @@
                 android:id="@+id/txtTemperState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="#FFC107"
                 android:textSize="35dp"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -79,7 +79,7 @@
                 android:textAlignment="center"
                 android:textSize="63dp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
+                android:textColor="#FFC107"
 
                 />
 

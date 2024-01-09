@@ -11,10 +11,11 @@ import java.util.ArrayList;
 
 public class LocationAutoSuggest extends ArrayAdapter implements Filterable {
     ArrayList<String> results;
+
     int resource;
     Context context;
 
-    LocationAPI locationAPI =new LocationAPI();
+    LocationAPI placeApi=new LocationAPI();
 
     public LocationAutoSuggest(Context context,int resId){
         super(context,resId);
@@ -40,7 +41,7 @@ public class LocationAutoSuggest extends ArrayAdapter implements Filterable {
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults filterResults=new FilterResults();
                 if(constraint!=null){
-                    results=locationAPI.autoComplete(constraint.toString());
+                    results=placeApi.autoComplete(constraint.toString());
 
                     filterResults.values=results;
                     filterResults.count=results.size();
